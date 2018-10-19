@@ -1,61 +1,61 @@
-<?php
+    <?php
 
-class Generate extends CI_Controller
-{
-
-    function Generate()
-    {
-        parent::__construct();
-        $this->load->database();
-        $this->load->helper('url');
-    }
-
-
-    function create()
+    class Generate extends CI_Controller
     {
 
-                $this->load->library('cezpdf');
+        function Generate()
+        {
+            parent::__construct();
+            $this->load->database();
+            $this->load->helper('url');
+        }
 
-        $this->cezpdf->ezText('PDF REPORT OF LOGIN TABLE', 12, array('justification' => 'center'));
-        $this->cezpdf->ezSetDy(-10);
-                $i=1;
-                $content="";
 
-                $fname="";
-                $query = $this->db->query('SELECT * FROM tbl_bill_info');
-                $num = $query->num_fields();
-                $farr=array();
+        function create()
+        {
 
-                while($i <= $num){
-                    $test = $i;
-                    $value = $this->input->post($test);
+                    $this->load->library('cezpdf');
 
-                    if($value != ''){
-                            $fname= $fname." ".$value;
-                            array_push($farr, $value);
+            $this->cezpdf->ezText('PDF REPORT OF LOGIN TABLE', 12, array('justification' => 'center'));
+            $this->cezpdf->ezSetDy(-10);
+                    $i=1;
+                    $content="";
 
-                        }
-                     $i++;
-                }
+                    $fname="";
+                    $query = $this->db->query('SELECT * FROM tbl_bill_info');
+                    $num = $query->num_fields();
+                    $farr=array();
 
-                $fname = trim($fname);
+                    while($i <= $num){
+                        $test = $i;
+                        $value = $this->input->post($test);
 
-                $fname=str_replace(' ', ',', $fname);
-                $this->db->select($fname);
-                $query = $this->db->get('table_name');
-                $result = $query->result();
+                        if($value != ''){
+                                $fname= $fname." ".$value;
+                                array_push($farr, $value);
 
-                foreach ($farr as $j)
-                {
-
-                    $content= strtoupper($j)."\n\n";
-                    foreach($result as $res){
-                       $content = $content.$res->$j."\n";
+                            }
+                        $i++;
                     }
 
-                      $this->cezpdf->ezText($content, 10);
+                    $fname = trim($fname);
 
-                       $this->cezpdf->ezStream();
-                 }
+                    $fname=str_replace(' ', ',', $fname);
+                    $this->db->select($fname);
+                    $query = $this->db->get('table_name');
+                    $result = $query->result();
+
+                    foreach ($farr as $j)
+                    {
+
+                        $content= strtoupper($j)."\n\n";
+                        foreach($result as $res){
+                        $content = $content.$res->$j."\n";
+                        }
+
+                        $this->cezpdf->ezText($content, 10);
+
+                        $this->cezpdf->ezStream();
+                    }
+        }
     }
-}

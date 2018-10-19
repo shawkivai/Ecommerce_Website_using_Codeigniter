@@ -25,11 +25,11 @@ class Checkout_Model extends CI_Model{
     
     public function login_info($email_address,$password){
         $this->db->select('*');
-         $this->db->from('tbl_customer');
-          $this->db->where('email_address',$email_address);
-          $this->db->where('password',$password);
-          
-          $query_result=$this->db->get();
+        $this->db->from('tbl_customer');
+        $this->db->where('email_address',$email_address);
+        $this->db->where('password',$password);
+        
+        $query_result=$this->db->get();
         $result=$query_result->row();
         return $result;
 //          
@@ -46,7 +46,7 @@ class Checkout_Model extends CI_Model{
     public function save_wishlist_info($data){
         $this->db->insert('wishlist',$data);
         
-     redirect('cart/show_wishlist');
+    redirect('cart/show_wishlist');
     }
     
     public function view_wishlist()

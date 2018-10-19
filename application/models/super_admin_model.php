@@ -1,17 +1,17 @@
-<?php
+    <?php
 
-class Super_Admin_Model extends CI_Model {
+    class Super_Admin_Model extends CI_Model {
 
     public function save_category_info($data) {
         $this->db->insert('tbl_category', $data);
     }
 
-//     public function add_category() {
-//        $data = array();
-//        $data['admin_main_content'] = $this->load->view('admin/add_category_form', '', true);
-//        $this->load->view('admin/admin_master', $data);
-//    }
-//    
+    //     public function add_category() {
+    //        $data = array();
+    //        $data['admin_main_content'] = $this->load->view('admin/add_category_form', '', true);
+    //        $this->load->view('admin/admin_master', $data);
+    //    }
+    //    
     public function select_all_category() {
         $this->db->select('*');
         $this->db->from('tbl_category');
@@ -54,11 +54,11 @@ class Super_Admin_Model extends CI_Model {
 
         return $result;
     }
-    
+
     public function save_manufacturer_info($data){
-         $this->db->insert('tbl_manufacturer', $data);
+            $this->db->insert('tbl_manufacturer', $data);
     }
-    
+
     public function select_all_manufacturer() {
         $this->db->select('*');
         $this->db->from('tbl_manufacturer');
@@ -123,13 +123,13 @@ class Super_Admin_Model extends CI_Model {
     }
     public function save_product_info($data)
     {
-         $this->db->insert('tbl_product', $data);
+            $this->db->insert('tbl_product', $data);
     }
-    
-      public function save_wishlist($data)
+
+        public function save_wishlist($data)
     {
-         $this->db->insert('wishlist', $data);
+            $this->db->insert('wishlist', $data);
     }
-    
-    
-}
+
+
+    }
