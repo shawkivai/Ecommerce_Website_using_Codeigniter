@@ -119,8 +119,8 @@
                                         <ul class="products_list">
                                             
                                              <?php 
-                                                    
-                                                    foreach ($cart_contents as $v_contents){
+                                                    if(is_array($cart_contents)):
+                                                    foreach ($cart_contents as $v_contents):
                                                     ?>
                                             <li>
                                                  
@@ -146,7 +146,10 @@
                                                
                                             </li>
                                             
-                                                 <?php } ?>
+                                                 <?php
+                                                    endforeach;
+                                                    endif;
+                                                 ?>
                                         </ul>
 <!--                                    
                                         </ul>

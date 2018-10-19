@@ -35,12 +35,9 @@ $cart_contents = $this->cart->contents();
     <tbody>
 
 <?php
-foreach ($cart_contents as $v_contents) {
+if(is_array($cart_contents)):
+foreach ($cart_contents as $v_contents) :
     ?>
-
-
-
-
             <tr>
                 <!--Product name and image-->
                 <td data-title="Product Image &amp; name" class="t_md_align_c">
@@ -77,7 +74,11 @@ foreach ($cart_contents as $v_contents) {
         <p class="f_size_large fw_medium scheme_color">BDT<?php echo $v_contents['subtotal'] ?></p>
     </td>
     </tr>
-<?php } ?>
+<?php 
+    endforeach;
+endif;
+
+?>
 
 
 

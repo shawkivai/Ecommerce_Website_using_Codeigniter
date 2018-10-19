@@ -10,6 +10,7 @@ class Cart extends CI_Controller {
         $qty = 1;
 //        $qty = $this->input->post('quantity', true);
         $product_info = $this->welcome_model->select_product_by_product_id($product_id);
+        
 //        echo '<pre>';
 //        print_r($product_info);
 //        exit();
@@ -24,7 +25,7 @@ class Cart extends CI_Controller {
 //        echo '<pre>';
 //        print_r($data);
 //        exit();
-        $this->cart->insert($data);
+        $cart = $this->cart->insert($data);
         redirect('cart/show_cart');
     }
 
