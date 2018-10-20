@@ -13,7 +13,7 @@
                     <h2 class="tt_uppercase color_dark m_bottom_20">My Wishlist</h2>
                     <div class="row clearfix m_bottom_15">
                         <div class="col-lg-7 col-md-7 col-sm-7 f_sx_none m_xs_bottom_10">
-                            <p class="d_inline_middle f_size_medium">Results 1 - 5 of 45</p>
+                            <p class="d_inline_middle f_size_medium"></p>
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-5 f_sx_none t_xs_align_l t_align_r">
                             <!--pagination-->
@@ -45,7 +45,7 @@
                                     <td><?php echo $row->product_id; ?></td>
                                     <td><?php echo $row->product_name; ?></td>
                                     <td>
-                                        <img src="<?php echo base_url(). $row->product_image;?>"
+                                        <img src="<?php echo base_url(). $row->product_image;?>">
                                     </td>
                                     
                                             
