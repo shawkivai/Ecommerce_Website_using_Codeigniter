@@ -14,8 +14,8 @@
 		<meta charset="utf-8">
 		<title>Admin</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
-		<meta name="author" content="Muhammad Usman">
+		<meta name="description" content="Admin Panel">
+		<meta name="author" content="Mustakim Hayder">
 
 		<!-- The styles -->
 		<link  href="<?php echo base_url()?>asset/css/bootstrap-cerulean.css" rel="stylesheet">
@@ -135,12 +135,12 @@
 						<ul class="nav nav-tabs nav-stacked main-menu">
 							<li class="nav-header hidden-tablet">Main</li>
 							<li><a class="ajax-link" href="<?php echo base_url();?>super_admin"><i class="icon-home"></i><span class="hidden-tablet"> Dashbord</span></a></li>
-													<li><a class="ajax-link" href="<?php echo base_url();?>super_admin/add_category"><i class="icon-eye-open"></i><span class="hidden-tablet"> Add Category</span></a></li>
-													<li><a class="ajax-link" href="<?php echo base_url();?>super_admin/manage_category"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Category</span></a></li>
+							<li><a class="ajax-link" href="<?php echo base_url();?>super_admin/add_category"><i class="icon-eye-open"></i><span class="hidden-tablet"> Add Category</span></a></li>
+							<li><a class="ajax-link" href="<?php echo base_url();?>super_admin/manage_category"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Category</span></a></li>
 							<li><a class="ajax-link" href="<?php echo base_url();?>super_admin/add_manufacturer"><i class="icon-eye-open"></i><span class="hidden-tablet"> Add Manufacturer</span></a></li>
 							<li><a class="ajax-link" href="<?php echo base_url();?>super_admin/manage_manufacturer"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Manufacturer</span></a></li>
-													<li><a class="ajax-link" href="<?php echo base_url();?>super_admin/add_product"><i class="icon-eye-open"></i><span class="hidden-tablet"> Add Product</span></a></li>
-													<li><a class="ajax-link" href="<?php echo base_url();?>super_admin/manage_product"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Product</span></a></li>
+							<li><a class="ajax-link" href="<?php echo base_url();?>super_admin/add_product"><i class="icon-eye-open"></i><span class="hidden-tablet"> Add Product</span></a></li>
+							<li><a class="ajax-link" href="<?php echo base_url();?>super_admin/manage_product"><i class="icon-edit"></i><span class="hidden-tablet"> Manage Product</span></a></li>
 						</ul>
 						<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
 					</div><!--/.well -->

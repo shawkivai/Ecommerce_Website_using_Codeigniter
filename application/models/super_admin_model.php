@@ -17,7 +17,13 @@
         $this->db->from('tbl_category');
         $query_result = $this->db->get();
         $result = $query_result->result();
-
+        return $result;
+    }
+    public function select_all_product() {
+        $this->db->select('*');
+        $this->db->from('tbl_product');
+        $query_result = $this->db->get();
+        $result = $query_result->result();
         return $result;
     }
 
@@ -129,6 +135,37 @@
         public function save_wishlist($data)
     {
             $this->db->insert('wishlist', $data);
+    }
+
+    //publish & Unpublish products
+    public function update_publication_status_by_product_id($product_id) {
+
+        $this->db->set('publication_status', 1);
+        $this->db->where('product_id', $product_id);
+        $this->db->update('tbl_product');
+    }
+
+    public function update_unpublication_status_by_product_id($product_id) {
+
+        $this->db->set('publication_status', 0);
+        $this->db->where('product_id', $product_id);
+        $this->db->update('tbl_product');
+    }
+    public function select_product_info_by_id($product_id) {
+        $this->db->select('*');
+        $this->db->from('tbl_product');
+        $this->db->where('product_id', $product_id);
+        $query_result = $this->db->get();
+        $result = $query_result->row();
+        return $result;
+    }
+    public function update_product_info($data, $product_id) {
+        $this->db->where('product_id', $product_id);
+        $this->db->update('tbl_product', $data);
+    }
+    public function delete_product_by_id($product_id) {
+        $this->db->where('product_id', $product_id);
+        $this->db->delete('tbl_product');
     }
 
 

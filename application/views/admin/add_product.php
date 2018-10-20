@@ -102,7 +102,6 @@
                             <label class="control-label" for="typeahead">Prouduct  Image </label>
                             <div class="controls">
                                 <input type="file" class="span6"   name="product_image">
-                                
                             </div>
                         </div>
                         <div class="control-group">

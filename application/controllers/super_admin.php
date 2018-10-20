@@ -197,7 +197,7 @@
             
             ///start image upload
             
-                    $config['upload_path'] = 'images/product_images/';
+            $config['upload_path'] = 'images/product_images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']	= '1000';
             $config['max_width']  = '1024';
@@ -231,10 +231,6 @@
             
             
         }
-        
-        
-        
-        
             public function save_wishlist()
         {
             
@@ -290,6 +286,78 @@
             redirect('welcome');
             
             
+        }
+        //Manage Product
+        public function manage_product()
+        {
+            $data=array();
+            $data['all_product']=$this->sa_model->select_all_product();
+            $data['admin_main_content']=$this->load->view('admin/manage_product',$data,true);
+            $this->load->view('admin/admin_master',$data);
+        }
+
+        public function published_product($product_id)
+        {
+        
+            $this->sa_model->update_publication_status_by_product_id($product_id);
+            redirect('super_admin/manage_product');
+        }
+    public function unpublished_product($product_id)
+        {
+        
+            $this->sa_model->update_unpublication_status_by_product_id($product_id);
+            redirect('super_admin/manage_product');
+        }
+        //Edit Product 
+        public function edit_product($product_id)
+        {
+            $data=array();
+            $data['product_info']=$this->super_admin_model->select_product_info_by_id($product_id);
+            $data['admin_main_content']=$this->load->view('admin/edit_product',$data,true);
+            $this->load->view('admin/admin_master',$data);
+        }
+        public function update_product()
+        {
+            $data=array();
+            $product_id=$this->input->post('product_id');
+            $data['product_name']=$this->input->post('product_name');
+            $data['product_price']=$this->input->post('product_price');
+            $data['product_description']=$this->input->post('product_description');
+            $data['publication_status']=$this->input->post('publication_status');
+            //Product image 
+
+            $config['upload_path'] = 'images/product_images/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']	= '1000';
+            $config['max_width']  = '1024';
+            $config['max_height']  = '768';
+
+            $this->load->library('upload', $config);
+                    $this->upload->initialize($config);
+                    $error='';
+                    $fdata=array();
+            if (! $this->upload->do_upload('product_image'))
+            {
+                $error=$this->upload->dispaly_errors();
+                echo $error;
+                exit();
+                        
+            }
+            else
+            {
+                $fdata=  $this->upload->data();
+                            $data['product_image']=$config['upload_path'].$fdata['file_name'];
+                        
+            }
+
+            $this->super_admin_model->update_product_info($data,$product_id);
+            redirect('super_admin/manage_product');
+        }
+
+        public function delete_product($product_id)
+        {
+            $this->super_admin_model->delete_product_by_id($product_id);
+            redirect('super_admin/manage_product');
         }
     }
 
