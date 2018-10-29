@@ -45,7 +45,6 @@ class Checkout_Model extends CI_Model{
     }
     public function save_wishlist_info($data){
         $this->db->insert('wishlist',$data);
-        
     redirect('cart/show_wishlist');
     }
     

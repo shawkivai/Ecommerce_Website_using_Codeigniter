@@ -57,7 +57,7 @@
                             
                                         
                                         
-                                                    <form action="<?php echo base_url(); ?>cart/add_to_cart" method="post">
+            <form action="<?php echo base_url(); ?>cart/add_to_cart" method="post">
 
         <input type="hidden" name="product_id" value="<?php echo $row->product_id; ?>">
         <button class="button_type_4 bg_scheme_color r_corners tr_all_hover color_light f_left mw_0" type="submit">Add to cart</button>

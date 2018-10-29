@@ -54,16 +54,10 @@
         }
         public function select_product_by_product_id($product_id)
         {
-        
-            
             $sql="SELECT p.*,c.category_name,m.manufacturer_name FROM tbl_product as p,tbl_category as c,tbl_manufacturer as m WHERE (p.manufacturer_id=m.manufacturer_id AND p.category_id=c.category_id) AND p.product_id='$product_id'";
             $query_result = $this->db->query($sql);
             $result = $query_result->row();
-
-            return $result;
-            
-            
-            
+            return $result;   
         }
         
         

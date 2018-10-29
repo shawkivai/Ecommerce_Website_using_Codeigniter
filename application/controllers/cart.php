@@ -70,19 +70,17 @@
         
 
         public function add_to_wishlist($product_id) {
-            $customer_id=  $this->session->userdata('admin_id');
-            if ($customer_id != NULL) {
+                $product_id=$this->input->post('product_id',true);
                 $product_info = $this->welcome_model->select_product_by_product_id($product_id);
-    //            echo '<pre>';
-    //        print_r($product_info);
-    //        exit();
+            //    echo '<pre>';
+            //     print_r($product_info);
+            //     exit();
                 $data = array(
                     'product_id' => $product_info->product_id,
                     'product_price' => $product_info->product_price,
                     'product_name' => $product_info->product_name,
                     'product_image' =>$product_info->product_image,
-                    
-                    'customer_id' => $customer_id
+                    // 'customer_id' => $customer_id
                 );
     //            $aaa = $this->wishlist_model->match_wishlist_info($customer_id,$product_id);
     //            $this->checkout_model->save_wishlist_info($customer_id,$product_id,$data);
@@ -90,69 +88,10 @@
     //        print_r($data);
     //        exit();
                 $this->checkout_model->save_wishlist_info($data);
-                        
-
-                
-            } 
-            else {
                 redirect('cart/show_wishlist');
-            }
     //        echo '<pre>';
     //        print_r($customer_id);
     //        exit();
-    
-        
-            
-            $data=array();
-            $data['product_name']=$this->input->post('product_name',true);
-    //        $data['category_id']=$this->input->post('category_id',true);
-    //        $data['manufacturer_id']=$this->input->post('manufacturer_id',true);
-    //           $data['manufacturer_name']=$this->input->post('manufacturer_name',true);
-            
-            $data['product_description']=$this->input->post('product_description',true);
-            $data['product_price']=$this->input->post('product_price',true);
-            $data['product_quantity']=$this->input->post('product_quantity',true);
-            
-            $featured_product=  $this->input->post('featured_product',true);
-            if($featured_product=='on')
-            {
-                $data['featured_product']=1;
-            }
-            
-            ///start image upload
-            
-                    $config['upload_path'] = './image/product_images';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size']	= '1000';
-            $config['max_width']  = '1024';
-            $config['max_height']  = '768';
-
-            $this->load->library('upload', $config);
-                    $this->upload->initialize($config);
-                    $error='';
-                    $fdata=array();
-
-            if ( ! $this->upload->do_upload('product_image'))
-            {
-                $error=  $this->upload->dispaly_errors();
-                            echo $error;
-                            exit();
-                            
-            }
-            else
-            {
-                $fdata=  $this->upload->data();
-                            $data['product_image']=$config['upload_path'].$fdata['file_name'];
-                        
-            }
-            
-            ////end
-            //$data['publication_status']=  $this->input->post('publication_status',true);
-            $this->super_admin_model->save_product_info($data);
-            
-            $sdata['message']='save product successfully';
-            $this->session->set_userdata($sdata);
-            redirect('super_admin/add_product');
             
             
         }
